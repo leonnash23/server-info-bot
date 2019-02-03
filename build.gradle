@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+
+    id 'org.springframework.boot' version '2.0.2.RELEASE'
+}
+
+group 'leonidcheremshantsev'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes "Main-Class": "servertester.Main"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+
+bootJar {
+    mainClassName = 'servertester.Main'
+}
+
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.telegram', name: 'telegrambots', version: '4.1.2'
+    compile 'com.bmuschko:gradle-docker-plugin:2.2'
+    compile "org.telegram:telegrambots-spring-boot-starter:4.1.2"
+}
