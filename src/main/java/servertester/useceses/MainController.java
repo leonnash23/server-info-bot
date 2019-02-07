@@ -12,14 +12,12 @@ import servertester.domain.UserRepository;
 public class MainController extends TelegramLongPollingBot {
 
 
-    private final RequestWorker requestWorker;
     private final UserRepository userRepository;
     private final MessageWorker messageWorker;
     private final Router router;
 
     @Autowired
-    public MainController(RequestWorker requestWorker, UserRepository userRepository, MessageWorker messageWorker, Router router) {
-        this.requestWorker = requestWorker;
+    public MainController(UserRepository userRepository, MessageWorker messageWorker, Router router) {
         this.userRepository = userRepository;
         this.messageWorker = messageWorker;
         this.router = router;

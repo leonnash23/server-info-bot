@@ -2,6 +2,7 @@ package servertester.useceses;
 
 import org.apache.http.HttpStatus;
 
+@SuppressWarnings("unused")
 public class ServerInfo {
 
     private int statusCode;
@@ -12,13 +13,14 @@ public class ServerInfo {
         return this;
     }
 
+    public long getResponseTime() {
+        return responseTime;
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
     ServerInfo setResponseTime(long responseTime) {
         this.responseTime = responseTime;
         return this;
-    }
-
-    long getResponseTime() {
-        return responseTime;
     }
 
     public int getStatusCode() {

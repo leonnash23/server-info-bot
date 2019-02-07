@@ -1,4 +1,4 @@
-package servertester.useceses;
+package servertester.useceses.actions;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +32,10 @@ public class AddServerAction implements Action{
         server.setName(update.getMessage().getText().split(" ")[2]);
         serverRepository.save(server);
         return new SendMessage(user.getChatId(), "Сервер сохранён!");
+    }
+
+    @Override
+    public String getKey() {
+        return "/add";
     }
 }

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import servertester.domain.Server;
 import servertester.domain.ServerRepository;
 import servertester.domain.User;
-import servertester.domain.UserRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Component
 public class InMemoryServerRepository implements ServerRepository {
 
-    private Queue<Server> globalQueue = new ConcurrentLinkedQueue<>();
+    private final Queue<Server> globalQueue = new ConcurrentLinkedQueue<>();
 
     @PostConstruct
     public void init(){

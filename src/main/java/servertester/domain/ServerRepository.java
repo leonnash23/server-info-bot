@@ -6,6 +6,7 @@ public interface ServerRepository {
 
     List<Server> getUserServers(User user);
 
+    @SuppressWarnings("UnusedReturnValue")
     Server save(Server server);
 
 }

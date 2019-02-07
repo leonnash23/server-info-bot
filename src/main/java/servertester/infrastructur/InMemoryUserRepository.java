@@ -4,13 +4,22 @@ import org.springframework.stereotype.Component;
 import servertester.domain.User;
 import servertester.domain.UserRepository;
 
+import javax.annotation.PostConstruct;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Component
 public class InMemoryUserRepository implements UserRepository {
 
-    private Queue<User> globalQueue = new ConcurrentLinkedQueue<>();
+    private final Queue<User> globalQueue = new ConcurrentLinkedQueue<>();
+
+
+    @PostConstruct
+    public void init() {
+        User user = new User();
+        user.setChatId(53506043);
+        globalQueue.add(user);
+    }
 
 
     @Override

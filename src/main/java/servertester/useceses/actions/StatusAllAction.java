@@ -1,4 +1,4 @@
-package servertester.useceses;
+package servertester.useceses.actions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,6 +8,8 @@ import servertester.domain.Server;
 import servertester.domain.ServerRepository;
 import servertester.domain.User;
 import servertester.domain.UserRepository;
+import servertester.useceses.RequestWorker;
+import servertester.useceses.ServerInfo;
 
 import java.util.List;
 
@@ -35,5 +37,10 @@ public class StatusAllAction implements Action {
             stringBuilder.append(String.format("%s — %s, %d mc\n\r", server.getName(), serverInfo.isOK(), serverInfo.getResponseTime()));
         }
         return new SendMessage(update.getMessage().getChatId(), stringBuilder.toString());
+    }
+
+    @Override
+    public String getKey() {
+        return "/statusAll";
     }
 }

@@ -2,6 +2,7 @@ package servertester.domain;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class User {
 
     private long chatId;

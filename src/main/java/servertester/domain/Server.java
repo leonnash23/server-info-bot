@@ -1,5 +1,6 @@
 package servertester.domain;
 
+@SuppressWarnings("unused")
 public class Server {
 
     private long id;

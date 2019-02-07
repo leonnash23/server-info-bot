@@ -11,7 +11,4 @@ public class MessageWorker {
         return new SendMessage(user.getChatId(), "Добро пожаловать!");
     }
 
-    public SendMessage createUserHello(User user) {
-        return new SendMessage(user.getChatId(), "Здравствуйте, "+user.getUsername());
-    }
 }
