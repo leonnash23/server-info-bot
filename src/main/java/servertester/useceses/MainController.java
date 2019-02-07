@@ -3,6 +3,7 @@ package servertester.useceses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import servertester.domain.User;
@@ -29,12 +30,10 @@ public class MainController extends TelegramLongPollingBot {
         String userName = update.getMessage().getFrom().getUserName();
         User user = userRepository.getUser(chatId);
         if(user == null){
-            User newUser = new User();
-            newUser.setChatId(chatId);
-            newUser.setUsername(userName);
-            userRepository.save(newUser);
             try {
-                execute(messageWorker.createNewUserHello(newUser));
+                execute(new SendMessage(chatId, String.format("Привет, %s!☀️\nБот пока в разработке," +
+                        " возвращайся немного позже\nComing soon...\uD83D\uDD28", userName)));
+                return;
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
